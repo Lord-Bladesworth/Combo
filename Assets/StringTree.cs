@@ -6,7 +6,36 @@ using UnityEngine;
 public class StringTree<T>
 {
     TreeNode<T> TreeNode;
+    /*
+     * tree creation:
+     * create the super root node
+     *
+     * for(x=0; x< treeableData parameter length)
+     *       create a dummy treenode for treeableData
+     *       send created Treenode to SuperRoot and assign it as it's children
+     *       
+     *TreeNode Edge Creation
+     *        TreeNode receieves treeNode
+     *        Check if receieved Key string element[0] is present on Child Edges
+     *             not:
+     *                  {
+     *                 if(Keystring End of String)
+     *                  
+     *                 
+     *                 else
+     *                  create Child TreeNode
+     *                  child TreeNode.TreeNode Edge Creation (TreeNode Data, Keystring ([0] excluded) recurse
+     *                  }
+     *              els
+     *              
+     *                  
+     *
+     *
 
+
+
+
+     */
     public void BuildTree()
     {
     }
@@ -17,8 +46,6 @@ public class StringTree<T>
 
         }
     }
-
-
 }
 
 
@@ -43,6 +70,11 @@ class TreeNode<T>
         }
     }
 
+
+    void ChildLookup()
+    {
+
+    }
     public void AddChild(char Key, TreeNode<T> data)
     {
         if(ChildNodes == null)

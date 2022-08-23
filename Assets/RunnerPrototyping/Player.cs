@@ -59,9 +59,8 @@ public class Player : MonoBehaviour
     */
     string RecursionTest(string str)
     {
-        if(TuringCheck())
+        if (TuringCheck())
             return "";
-
 
 
         return "";
