@@ -82,7 +82,7 @@ namespace Ragna {
             {
 
             }
-
+ 
 
             for(int x=0; x< RagnaData.CharacterStates.Count;x++)
             {

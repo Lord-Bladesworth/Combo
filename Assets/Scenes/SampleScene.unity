@@ -1104,7 +1104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635672447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.83, y: -2.12, z: 0}
+  m_LocalPosition: {x: -7.69, y: -1.61, z: 0}
   m_LocalScale: {x: 1.5089, y: 2.1313214, z: 1.5089}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1143,6 +1143,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f2eb25d8071ae459bc7b01b4e11785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState:
+    StateName: 
+    Category: 0
+    StateKey:
+      DirectionalPrefix: 0
+      Button: 0
+    HitboxActivationTime: 0
+    HitRigidData:
+      Launch: {x: 0, y: 0}
+      Bounce: {x: 0, y: 0}
+      InteractionType: 0
+      Target: 0
+      ActivationTime: 0
+      ActivationEnd: 0
+    AnimationData: []
+    isAllCancellable: 0
+    CancellableTime: 0
+    CancellablesTo: []
 --- !u!114 &1635672452
 MonoBehaviour:
   m_ObjectHideFlags: 0
