@@ -108,4 +108,13 @@ public class DirectionalButton
     {
         return DirectionalPrefix.ToString() + Button.ToString();
     }
+    public string toString()
+    {
+        return "";
+    }
+}
+
+enum ButtonEnumToStringMode
+{
+    normal, mirrored, buttonPrefixed
 }

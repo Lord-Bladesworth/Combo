@@ -16,17 +16,18 @@ public class StringTree<T>
      *       
      *TreeNode Edge Creation
      *        TreeNode receieves treeNode
-     *        Check if receieved Key string element[0] is present on Child Edges
+     *        if receieved Key string element[0] is present on Child Edges
      *             not:
      *                  {
      *                 if(Keystring End of String)
-     *                  
+     *                  End, store assign receieved Data as The treenode's data
      *                 
      *                 else
      *                  create Child TreeNode
-     *                  child TreeNode.TreeNode Edge Creation (TreeNode Data, Keystring ([0] excluded) recurse
+     *                  child TreeNode.TreeNode Edge Creation (TreeNode Data, Keystring ([0] excluded) recurse and repeat
      *                  }
-     *              els
+     *              else
+     *                  
      *              
      *                  
      *
