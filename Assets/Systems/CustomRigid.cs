@@ -81,7 +81,7 @@ public class CustomRigid : MonoBehaviour
     }
 
     /*
-    //to be replaced once hitbox system is fully clarified
+    //to be replaced once hitbox system is fu   lly clarified
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(CurrentRigidState == RigidState.Active)
@@ -104,6 +104,7 @@ public class CustomRigid : MonoBehaviour
     //test whether or not this algorithm holds up to requirements
     private void ContactEvent(Collision2D collision)
     {
+        //problem: unintuitive solution
      
         //override when rigidbody hits the corner provided by the camera. ponder an approach regarding this issue later
         if (collision.collider.tag == "CameraCorner")
@@ -136,20 +137,16 @@ public class CustomRigid : MonoBehaviour
             case enumRigidInteraction.slide:
                 break;
         }
-        
-
     }
     //used by OnCollisionEnter
     private void ContactEvent(Collider2D collision)
     {
-
         //override when rigidbody hits the corner provided by the camera. ponder an approach regarding this issue later
         if (collision.tag == "CameraCorner")
         {
             body.velocity = new Vector2((LaunchVelocity.x.RaisedtoZero() * -1) * 10, 8); //launch at a fixed velocity
             return;
-        }
-        //oh yes... here comes the issue    
+        }    
         switch (rigidHitData.rigidInteractionType)
         {
             case enumRigidInteraction.bounce:
@@ -161,7 +158,6 @@ public class CustomRigid : MonoBehaviour
                 }
                 else if (collision.tag == "Corner" && (rigidHitData.LaunchVelocity.x > 0) && (rigidHitData.rigidTarget == enumRigidTarget.wall || rigidHitData.rigidTarget == enumRigidTarget.omni))
                 {
-                    //  body.velocity = new Vector2(rigidHitData.BounceVelocity.x.ScalarVectApply(LaunchVelocity.x *-1),LaunchVelocity.y);
                     body.velocity = new Vector2((LaunchVelocity.x.RaisedtoZero() * -1) * rigidHitData.BounceVelocity.x, rigidHitData.BounceVelocity.y);
                     CurrentRigidState = RigidState.Inactive;
                     Debug.Log("Bounce");
@@ -174,10 +170,7 @@ public class CustomRigid : MonoBehaviour
             case enumRigidInteraction.slide:
                 break;
         }
-
-
     }
-
     //THE holdposition coroutine
     private IEnumerator HoldPosition(int duration)
     {
@@ -190,7 +183,7 @@ public class CustomRigid : MonoBehaviour
         }
         count = 0;
         body.bodyType = RigidbodyType2D.Dynamic;
-        body.velocity = Vector2.left; //modify later when left/right orientation is figured out
+        body.velocity = Vector2.left;
 
     }
     private IEnumerator SlideAction()
@@ -205,7 +198,6 @@ public enum enumRigidInteraction
 {
    none,bounce, slide, splat
 }
-
 //default is none
 public enum enumRigidTarget
 {

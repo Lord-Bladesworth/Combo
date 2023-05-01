@@ -99,8 +99,8 @@ public class CharacterDataUIE : Editor
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Corresponding Input");
-            charStates.StateKey.DirectionalPrefix = EditorGUILayout.IntPopup(charStates.StateKey.DirectionalPrefix, new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }, new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
-            charStates.StateKey.Button = (ButtonEnum)EditorGUILayout.EnumPopup(charStates.StateKey.Button);
+          //  charStates.StateKey.DirectionalPrefix = EditorGUILayout.IntPopup(charStates.StateKey.DirectionalPrefix, new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }, new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+           // charStates.StateKey.Button = (ButtonEnum)EditorGUILayout.EnumPopup(charStates.StateKey.Button);
             EditorGUILayout.EndHorizontal();
         }
         /*

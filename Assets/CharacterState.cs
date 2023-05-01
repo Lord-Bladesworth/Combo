@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FGAnimations;
 
 namespace Ragna
 {
@@ -13,7 +14,7 @@ namespace Ragna
         public int HitboxActivationTime;
         public RagnaRigidData HitRigidData;
         public List<AnimCel> AnimationData;
-        public bool isAllCancellable; //is it Cancelkable regardless of time?
+        public bool isAllCancellable; //is it Cancelkable regardless of time?   
         public int CancellableTime; //at which time is the animation cancellable?
         public List<DirectionalButton> CancellablesTo; //gatling system. you know the picture
         public RigidHitData rigidHitData { get; private set; }

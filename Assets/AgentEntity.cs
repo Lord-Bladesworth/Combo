@@ -30,8 +30,5 @@ public class AgentEntity : MonoBehaviour
     }
 }
 
-public enum PlayerState
-{
-    Idle, Moving, Attacking
-}
+
 

@@ -85,6 +85,7 @@ namespace Ragna
         }
         public void OnButtonA(InputAction.CallbackContext cont)
         {
+            /*
             if(cont.phase == InputActionPhase.Started)
             {
                 buttonBuffer.Button = ButtonEnum.A;
@@ -94,10 +95,12 @@ namespace Ragna
                 buttonBuffer.Button = ButtonEnum.N;
             }
             Debug.Log("ping!");
+            */
            
         }
         public void OnButtonB(InputAction.CallbackContext cont)
         {
+            /*
             if (cont.phase == InputActionPhase.Started)
             {
                 buttonBuffer.Button = ButtonEnum.B;
@@ -106,9 +109,11 @@ namespace Ragna
             {
                 buttonBuffer.Button = ButtonEnum.N;
             }
+            */
         }
         public void OnButtonC(InputAction.CallbackContext cont)
         {
+            /*
             if (cont.phase == InputActionPhase.Started)
             {
                 buttonBuffer.Button = ButtonEnum.C;
@@ -116,7 +121,8 @@ namespace Ragna
             else if (cont.phase == InputActionPhase.Canceled)
             {
                 buttonBuffer.Button = ButtonEnum.N;
-            }
+            */
+            
         }
         public void OnMovement(InputAction.CallbackContext cont)
         {

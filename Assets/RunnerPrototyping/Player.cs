@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FGAnimations;
 public class Player : MonoBehaviour
 {
     [SerializeField]
@@ -33,8 +33,53 @@ public class Player : MonoBehaviour
         RecursionTest(strList);
         */
 
+        DirectionalButton buttonA = new DirectionalButton("623AB");
+        Debug.Log(buttonA.ToString());
+        Debug.Log(buttonA.getStringKeyFormat());
+        DirectionalButton ButtonB = new DirectionalButton("623AB");
+        DirectionalButton ButtonC = new DirectionalButton("5A");
+        DirectionalButton ButtonD = new DirectionalButton("APRFA929");
+        DirectionalButton buttonE = new DirectionalButton("6321478ABCD");
+        StringTree<int> testTree = new StringTree<int>();
+        TreeNode<int> tree = new TreeNode<int>();
 
-        RecursionTest("beans");
+        tree.Add("ABCDE", 2022);
+        tree.Add("ABC123", 2025);
+        tree.Add("ABC", 152223);
+        tree.Add("ABCDE", 2023);
+
+        string turd = "Buggerall";
+        //possibly do a nullcase class?
+        //if tree returns a null, internally handle it by passing this class
+        Debug.Log(tree.getData("ABCDE").Data.ToString());
+        Debug.Log(tree.getData("A").Data.ToString());
+        if (tree.getData("AB") == null)
+            Debug.Log("AB node does not contain anything");
+        else
+            Debug.Log("contains something");
+
+        TreeNode<testclass> tree2 = new TreeNode<testclass>();
+
+        tree2.Add("ABC", new testclass { v = 0,strang ="ABC" });
+        tree2.Add("A123", new testclass { v = 1, strang = "Alkallabeth" });
+
+        var node = tree2.getData("A");
+        Debug.Log(tree2.getData("ABC").Data.strang);
+        if (node.isNodeEmpty)
+            Debug.Log("Node has returned empty");
+        Debug.Log(node.isNodeEmpty);
+        Debug.Log(tree2.getData("A").Data.strang);
+
+        Debug.Log(turd.AppendIndex(1));
+
+
+       // RecursionTest("beans");
+    }
+
+    class testclass
+    {
+        public int v;
+        public string strang;
     }
 
     // Update is called once per frame

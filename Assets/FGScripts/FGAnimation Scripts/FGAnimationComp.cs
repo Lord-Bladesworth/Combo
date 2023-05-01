@@ -46,10 +46,7 @@ public class FGAnimationComp : MonoBehaviour
         CurrentState = DefaultState;
     }
 
-    public void BuildAnimation(FGAnimationData data, string DefaultState = "Idle")
-    {
 
-    }
     // Start is called before the first frame update
     void Start()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using FGAnimations;
 namespace Ragna {
     [RequireComponent(typeof(SpriteRenderer))]
     public class RagnaAnimation2 : MonoBehaviour
@@ -32,7 +33,10 @@ namespace Ragna {
         {
             OnAnimationDoneAction += act;
         }
-
+        void ResetClock(int Offset=0)
+        {
+            Clock = 0 + Offset; 
+        }
         void AnimationUpdate()
         {
             if (Clock > _reel.ReelLength)
@@ -43,13 +47,10 @@ namespace Ragna {
                     OnAnimationDoneAction(); 
             }
 
-            spr.sprite = _reel.ReadReelData(Clock);
-
+            spr.sprite = _reel[Clock].Celdata;
             if(OnFrameDrawAction != null)
                 OnFrameDrawAction(Clock);
             Clock++;
-
-
         }
 
     }

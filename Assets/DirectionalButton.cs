@@ -1,21 +1,43 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System;
+
 //TODO for now this class will be ported to actual for use. modifications must be made in case of multi motion/input type of scenarios
 // solution is to turn DirectionalPrefix and Button to a dynamic array (maybe a linked list instead)
 [System.Serializable]
 public class DirectionalButton
 {
-    public int DirectionalPrefix;
-    public ButtonEnum Button;
-
+    public List<int> DirectionalPrefix { get; private set; }
+    public List<ButtonEnum> Button { get; private set; }
+    /*
+    public int[] DirectionalPrefix;
+    public ButtonEnum[] Button;
+    */
     public Vector2 setPrefixByVector
     {
         set
         {
-            DirectionalPrefix = ConvertVector(value);
+           // DirectionalPrefix = ConvertVector(value);
         }
     }
+    public void RecordPrefixByVector(Vector2[] vects)
+    {
+        DirectionalPrefix = new List<int>();
+        for(int x=0; x< vects.Length;x++)
+        {
+            DirectionalPrefix.Add(ConvertVector(vects[x]));
+           
+        }
+    }
+    public void RecordButtons(char[] buttons)
+    {
+        Button = new List<ButtonEnum>();
+        for(int x=0;x< buttons.Length;x++)
+        {
+            Button.Add(ConvertCharToButtonEnum(buttons[x]));
+        }
+    }
+
 
     //converts given vector2 to numpad notation
     int ConvertVector(Vector2 vect)
@@ -43,28 +65,28 @@ public class DirectionalButton
             return 8;
         return 0;
     }
-    public DirectionalButton(int directionalPrefix, ButtonEnum button)
-    {
-        Button = button;
-        DirectionalPrefix = directionalPrefix;
-    }
+
     /// <summary>
-    /// construct a directionalbutton by passing a string. NOTE: currently it can only accept latest entries so a 236AB passing would only result in creating a 6B button
+    /// construct a directionalbutton by passing a string.
     /// </summary>
     /// <param name="ButtonInString"></param>
     public DirectionalButton(string ButtonInString)
     {
-        char[] Buttons = ButtonInString.ToCharArray();
-        for (int x = 0; x < Buttons.Length; x++)
+        DirectionalPrefix = new List<int>();
+        Button = new List<ButtonEnum>();
+        char[] _Buttons = ButtonInString.ToCharArray();
+        for (int x = 0; x < _Buttons.Length; x++)
         {
-            if (CheckCharIsNumberUnicode(Buttons[x]))
+            if (CheckCharIsNumberUnicode(_Buttons[x]))
             {
+                //  DirectionalPrefix = (int)Buttons[x] - 48;
+                DirectionalPrefix.Add((int)_Buttons[x] - 48);
 
-                DirectionalPrefix = (int)Buttons[x] - 48;
             }
             else
             {
-                Button = ConvertCharToButtonEnum(Buttons[x]);
+                Button.Add(ConvertCharToButtonEnum(_Buttons[x]));
+              // Button = ConvertCharToButtonEnum(Buttons[x]);
             }
         }
     }
@@ -73,12 +95,8 @@ public class DirectionalButton
     {
         return (int)Char > 47 && (int)Char < 58;
     }
-    void Concatenate(string button)
-    {
 
-    }
-
-    //TODO work on throwing an error instead of just defaulting to F6 function
+    //TODO work on throwing an error instead of just defaulting to F6 function  
     ButtonEnum ConvertCharToButtonEnum(char Char)
     {
         ButtonEnum _Button;
@@ -86,35 +104,61 @@ public class DirectionalButton
         {
             return _Button;
         }
-        return ButtonEnum.F6;
+        return ButtonEnum.N;
     }
-    public bool Equals(int DirectPrfx, ButtonEnum button)
+
+    public bool isEquals(List<int> prefix, List<ButtonEnum> rButtons)
     {
-        if (!(DirectPrfx == DirectionalPrefix))
+        if (DirectionalPrefix.Count != prefix.Count || Button.Count != rButtons.Count)
             return false;
-        if (!(Button == button))
-            return false;
+        for(int x=0; x< DirectionalPrefix.Count;x++)
+        {
+            if (DirectionalPrefix[x] != prefix[x])
+                return false;
+        }
+        for(int y=0; y<Button.Count; y++)
+        {
+            if (Button[y] != rButtons[y])
+                return false;
+        }
         return true;
     }
-    public bool Equals(DirectionalButton button)
+  
+    public bool isEquals(DirectionalButton button)
     {
-        if (DirectionalPrefix != button.DirectionalPrefix)
-            return false;
-        if (Button != button.Button)
-            return false;
-        return true;
+        return isEquals(button.DirectionalPrefix, button.Button);
+       
     }
     public override string ToString()
     {
-        return DirectionalPrefix.ToString() + Button.ToString();
+        return DirPrefixToString() + ButtontoString();
     }
-    public string toString()
+    public string getStringKeyFormat()
+    {
+        return ButtontoString() + DirPrefixToString();
+    }
+
+   private string DirPrefixToString()
+    {
+        string strPrefix ="";
+        for(int x=0; x< DirectionalPrefix.Count;x++)
+        {
+            strPrefix += DirectionalPrefix[x];
+        }
+        return strPrefix;
+    }
+    private string ButtontoString()
+    {
+        string strButton="";
+        for(int x=0; x< Button.Count;x++)
+        {
+            strButton += Button[x].ToString();
+        }
+        return strButton;
+    }
+
+    public static string translateReadable()
     {
         return "";
     }
-}
-
-enum ButtonEnumToStringMode
-{
-    normal, mirrored, buttonPrefixed
 }

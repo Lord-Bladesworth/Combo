@@ -11,7 +11,7 @@ namespace Ragna {
         BodyController body;
         RagnaAnimation animation;
 
-     
+      
 
         CharacterState CurrentState;
         CharacterState DefaultState;
@@ -29,14 +29,15 @@ namespace Ragna {
             if (!GetComponent<HitboxMaster>())
             {
                 gameObject.AddComponent<HitboxMaster>();
-            }           
+            }
+            Application.targetFrameRate = 30;
             hitboxMaster = GetComponent<HitboxMaster>();
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            body = GetComponent<BodyController>();
+            body = GetComponent<BodyController>(); 
             animation = GetComponent<RagnaAnimation>();
             RagnaData.FinalizeData();
             body.Build(RagnaData.moveStats);
@@ -73,7 +74,7 @@ namespace Ragna {
        
         }
         void ProcessCommand()
-        {
+        {/*
             if(LastReceievedCommand.Button != ButtonEnum.N)
             {
 
@@ -103,7 +104,7 @@ namespace Ragna {
                     return;
                 }
                
-            }
+            }*/
         }
         void SwitchState(CharacterState state)
         {

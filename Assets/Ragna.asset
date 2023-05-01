@@ -21,9 +21,6 @@ MonoBehaviour:
   CharacterStates:
   - StateName: Izanami Idle
     Category: 4
-    StateKey:
-      DirectionalPrefix: 5
-      Button: 0
     HitboxActivationTime: 0
     HitRigidData:
       Launch: {x: 0, y: 0}
@@ -54,9 +51,6 @@ MonoBehaviour:
     CancellablesTo: []
   - StateName: Punch
     Category: 3
-    StateKey:
-      DirectionalPrefix: 6
-      Button: 0
     HitboxActivationTime: 0
     HitRigidData:
       Launch: {x: 0, y: 0}
@@ -105,9 +99,6 @@ MonoBehaviour:
     CancellablesTo: []
   - StateName: Ragna Movement
     Category: 0
-    StateKey:
-      DirectionalPrefix: 0
-      Button: 11
     HitboxActivationTime: 0
     HitRigidData:
       Launch: {x: 0, y: 0}
